@@ -1,7 +1,7 @@
 import { CategoryType } from "@/app/(customer)/page";
 import { EditFood } from "./EditFood";
-import { FoodsByCategoryType } from "@/app/components/FoodCategorizer";
 import { FoodType } from "@/app/components/FoodCard";
+import Image from "next/image";
 
 export interface EditableFoodCardProps extends FoodType {
 	refreshFoods: () => void;
@@ -20,7 +20,7 @@ export const EditableFoodCard = ({
 	return (
 		<div className="max-w-[270px] w-full h-[241px] bg-black/40 rounded-[20px] flex flex-col justify-between items-center relative p-4">
 			<div className="max-w-[165px] w-full h-[129px] rounded-[12px] relative overflow-hidden">
-				<img alt="image" src={image} className="w-full h-full bg-cover" />
+				<Image alt="image" src={image} className="w-full h-full bg-cover" />
 			</div>
 			<div className="w-full flex flex-col gap-2">
 				<div className="w-full flex justify-between items-center">

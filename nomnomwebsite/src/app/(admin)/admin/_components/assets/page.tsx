@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CategoryBadge } from "../_components/CategoryBadge";
 import axios from "axios";
-import { FoodCategorizerForAdmin } from "../_components/FoodCategorizerForAdmin";
-import { AddCategory } from "../_components/addCategory/AddCategory";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { CategoryBadge } from "../CategoryBadge";
+import { AddCategory } from "../add&EditCategory/AddCategory";
+import { FoodCategorizerForAdmin } from "../FoodCategorizerForAdmin";
 
 export type CategoriesWithNumberType = {
 	_id: string;
