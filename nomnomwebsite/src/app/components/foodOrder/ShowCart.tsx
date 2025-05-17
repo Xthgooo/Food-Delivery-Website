@@ -18,11 +18,8 @@ export const ShowCart = () => {
 	const [activeTab, setActiveTab] = useState<"Cart" | "Order">("Cart");
 	const [cartCount, setCartCount] = useState<number>(0);
 	const tabs: string[] = ["Cart", "Order"];
-	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
-		setLoading(true);
-
 		const updateCartCount = () => {
 			const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 			const count = cart.reduce(
@@ -37,7 +34,6 @@ export const ShowCart = () => {
 		window.addEventListener("cartUpdated", updateCartCount);
 		return () => {
 			window.removeEventListener("cartUpdated", updateCartCount);
-			setLoading(false);
 		};
 	}, []);
 

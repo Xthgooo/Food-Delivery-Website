@@ -7,7 +7,6 @@ import { NomNomLogo } from "./Logo";
 import { FooterContentTemplate } from "./FooterContentTemplate";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CategoryType } from "../(customer)/page";
 import axios from "axios";
 
 const footerEndButtons = [

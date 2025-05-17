@@ -1,22 +1,17 @@
 "use client";
 
-import { useContext } from "react";
 import { CreateAccountForm } from "./_components/CreateAccountForm";
-import { StepContext } from "./_components/StepProvider";
-import { useAuth } from "@/app/components/contextProvider/AuthContext";
 
 export default function CreateAccountHome() {
-  const { step } = useContext(StepContext);
-
-  return (
-    <div className="w-screen h-screen flex gap-12 items-center p-5 pl-40 justify-center  ">
-      <CreateAccountForm />
-      <div className="w-[856px] h-[904px]">
-        <img
-          src="https://images.unsplash.com/photo-1674555650084-ae4c3dcfe79c?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGZvb2QlMjBwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D"
-          className="w-full h-full bg-cover rounded-md"
-        />
-      </div>
-    </div>
-  );
+	return (
+		<div className="w-screen h-screen flex gap-12 items-center p-5 pl-40 justify-center  ">
+			<CreateAccountForm />
+			<div className="w-[856px] h-[904px]">
+				<img
+					src="https://images.unsplash.com/photo-1674555650084-ae4c3dcfe79c?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGZvb2QlMjBwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D"
+					className="w-full h-full bg-cover rounded-md"
+				/>
+			</div>
+		</div>
+	);
 }

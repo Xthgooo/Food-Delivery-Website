@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAuth, UserType } from "../contextProvider/AuthContext";
+import { useAuth } from "../contextProvider/AuthContext";
 import axios from "axios";
 import { FoodOrderInfo } from "@/app/(admin)/admin/_components/contextProvider/AdminContextProvider";
 import { OrderDetailsTemplate } from "./OrderDetailsTemplate";
