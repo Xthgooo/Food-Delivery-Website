@@ -3,8 +3,8 @@ import { EditUserInfo } from "./EditUserInfo";
 
 export type ShowUserDetailsProps = {
 	title: string;
-	value: React.ReactNode;
-	id: string;
+	value: string | undefined;
+	id: string | undefined;
 };
 
 export const ShowUserDetails = ({ id, title, value }: ShowUserDetailsProps) => {

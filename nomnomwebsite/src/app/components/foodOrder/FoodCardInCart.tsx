@@ -5,6 +5,7 @@ import axios from "axios";
 import { Minus, Plus, XIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FoodType } from "../FoodCard";
+import Image from "next/image";
 
 export const FoodCardInCart = ({
 	foodID,
@@ -56,7 +57,11 @@ export const FoodCardInCart = ({
 	return (
 		<div className="w-full flex gap-[10px]">
 			<div className="w-[124px] h-[90px]">
-				<img src={orderedFood.image} className="w-full h-full bg-cover" />
+				<Image
+					alt="Ordered food image"
+					src={orderedFood.image}
+					className="w-full h-full bg-cover"
+				/>
 			</div>
 			<div className=" h-full flex flex-col justify-between">
 				<div className="w-full flex justify-between">

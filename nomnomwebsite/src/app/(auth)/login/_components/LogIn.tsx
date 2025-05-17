@@ -87,7 +87,7 @@ export const LogInForm = () => {
 							type="submit"
 							disabled={!isFormFilled}
 							className="w-full h-9 flex justify-center items-center bg-white text-black text-[14px] disabled:opacity-50 disabled:cursor-not-allowed">
-							Let's Go!
+							Let`&apos;`s Go!
 						</Button>
 					</form>
 				</Form>

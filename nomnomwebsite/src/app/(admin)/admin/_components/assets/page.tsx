@@ -39,7 +39,7 @@ export default function FoodMenuPage() {
 	return (
 		<div className="w-full h-full flex flex-col gap-6 bg-black">
 			<div
-				className="bg-black/85 flex flex-col p-6 gap-4 fixed top-0 z-10 hidden lg:flex"
+				className="bg-black/85  flex-col p-6 gap-4 fixed top-0 z-10 hidden lg:flex"
 				style={{
 					width: "calc(100vw - 240px)",
 					maxWidth: "1200px",
@@ -102,7 +102,7 @@ export default function FoodMenuPage() {
 			<div className="lg:h-[120px] md:h-[150px] sm:h-[200px] h-[290px] mb-[40px]" />
 
 			<div className="px-10 flex flex-col gap-5">
-				{categories.map(({ categoryName, _id, numberOfFoods }) => {
+				{categories.map(({ categoryName, _id }) => {
 					const slug = categoryName.toLowerCase().replace(/\s+/g, "-");
 					return (
 						<section key={_id} id={slug} className="scroll-mt-[140px]">

@@ -44,7 +44,9 @@ export const FormTemplate = ({
 			<div className="w-full h-fit">{questionsContent}</div>
 			{forNewAccount ? (
 				<div className="w-full h-6 justify-center not-first:flex gap-3">
-					<p className="text-[16px] text-[#71717A]">Don't have an account?</p>
+					<p className="text-[16px] text-[#71717A]">
+						{"Don't have an account?"}
+					</p>
 					<a
 						onClick={(e) => {
 							e.preventDefault();
@@ -61,7 +63,8 @@ export const FormTemplate = ({
 					<a
 						onClick={(e) => {
 							e.preventDefault();
-							router.push("/login"), setStep(1);
+							router.push("/login");
+							setStep(1);
 						}}
 						className="text-[#2563EB] hover:underline">
 						Log in

@@ -21,11 +21,11 @@ export type UserType = {
 };
 
 export type User = {
-	user: UserType;
+	user: UserType | null;
 };
 
 type AuthContextType = {
-	user?: UserType;
+	user: UserType | null;
 	signIn: ({ email, password }: SignInType) => Promise<void>;
 	signUp: ({
 		profileEmoji,
@@ -58,7 +58,7 @@ export type SignUpType = {
 const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
-	const [user, setUser] = useState<UserType>();
+	const [user, setUser] = useState<UserType | null>(null);
 	const [loading, setLoading] = useState<boolean>(false);
 	const router = useRouter();
 
@@ -78,6 +78,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 				router.push("/admin/orders");
 			}
 		} catch (error) {
+			console.error("Sign-in error:", error);
 			toast.error("Failed to sign in!");
 		}
 	};
@@ -98,6 +99,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 			localStorage.setItem("token", data.token);
 			setUser(data.user);
 		} catch (error) {
+			console.error("Sign-up error:", error);
 			toast.error("Failed to sign in!");
 		}
 	};
@@ -105,7 +107,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 	const signOut = () => {
 		localStorage.removeItem("token");
 		localStorage.removeItem("cart");
-		setUser(undefined);
+		setUser(null);
 		router.push("/");
 	};
 
@@ -123,8 +125,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
 				setUser(data);
 			} catch (error) {
+				console.error("Token error", error);
 				localStorage.removeItem("token");
-				setUser(undefined);
+				setUser(null);
 			} finally {
 				setLoading(false);
 			}

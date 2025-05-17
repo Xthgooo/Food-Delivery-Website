@@ -1,5 +1,3 @@
-import { MonteCarlo, Parisienne } from "next/font/google";
-
 import "./globals.css";
 import { StepProvider } from "./(auth)/createnewaccount/_components/StepProvider";
 import { Toaster } from "@/components/ui/sonner";

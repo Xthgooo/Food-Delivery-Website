@@ -15,14 +15,18 @@ export const UserProfile = ({ user }: User) => {
 	return (
 		<Popover>
 			<PopoverTrigger className="w-9 h-9 bg-white flex justify-center items-center rounded-full">
-				{user.profileEmoji}
+				{user?.profileEmoji}
 			</PopoverTrigger>
 			<PopoverContent className=" p-4 rounded-xl shadow-lg z-1000 text-xs text-gray-800 font-medium space-y-3 ">
 				<p className="text-center text-[#EF4444] font-semibold text-sm">
 					🎀 Account Info 🎀
 				</p>
-				<ShowUserDetails id={user._id} title="Phone" value={user.phoneNumber} />
-				<ShowUserDetails id={user._id} title="Address" value={user.address} />
+				<ShowUserDetails
+					id={user?._id}
+					title="Phone"
+					value={user ? user.phoneNumber : "Not provided"}
+				/>
+				<ShowUserDetails id={user?._id} title="Address" value={user?.address} />
 				<Button
 					onClick={() => {
 						signOut();

@@ -13,6 +13,7 @@ import { Toggle } from "@/components/ui/toggle";
 import { useEffect, useState } from "react";
 import { ListFoodsInCart } from "./ListFoodsInCart";
 import { CheckOutOrders } from "./CheckedOutOrders";
+import { CartType } from "./ShowFoodDetails";
 
 export const ShowCart = () => {
 	const [activeTab, setActiveTab] = useState<"Cart" | "Order">("Cart");
@@ -21,11 +22,8 @@ export const ShowCart = () => {
 
 	useEffect(() => {
 		const updateCartCount = () => {
-			const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-			const count = cart.reduce(
-				(acc: number, item: any) => acc + item.quantity,
-				0
-			);
+			const cart: CartType = JSON.parse(localStorage.getItem("cart") || "[]");
+			const count = cart.reduce((acc, item) => acc + item.quantity, 0);
 			setCartCount(count);
 		};
 

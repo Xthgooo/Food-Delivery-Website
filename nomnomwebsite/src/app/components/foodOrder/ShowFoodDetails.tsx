@@ -4,10 +4,17 @@ import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FoodType } from "../FoodCard";
+import Image from "next/image";
 
 interface AddFoodToCartProps extends FoodType {
 	setIsOpen: (open: boolean) => void;
 }
+
+export type CartItemType = {
+	food: FoodType;
+	quantity: number;
+};
+export type CartType = CartItemType[];
 
 export const ShowFoodDetails = ({
 	_id,
@@ -23,7 +30,7 @@ export const ShowFoodDetails = ({
 	const handleAddFoodToCart = () => {
 		setIsOpen(false);
 
-		const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+		const cart: CartType = JSON.parse(localStorage.getItem("cart") || "[]");
 
 		const existingItemIndex = cart.findIndex(
 			(item: { food: FoodType; quantity: number }) => item.food._id === _id
@@ -32,7 +39,7 @@ export const ShowFoodDetails = ({
 		if (existingItemIndex !== -1) {
 			cart[existingItemIndex].quantity += quantity;
 		} else {
-			const cartItem = {
+			const cartItem: CartItemType = {
 				food: {
 					_id,
 					foodName,
@@ -62,7 +69,11 @@ export const ShowFoodDetails = ({
 	return (
 		<div className="flex gap-6 ">
 			<div className="w-[50%] h-full">
-				<img src={image} className="w-full h-[364px] bg-cover rounded-md" />
+				<Image
+					alt="food image"
+					src={image}
+					className="w-full h-[364px] bg-cover rounded-md"
+				/>
 			</div>
 			<div className="w-[50%] h-[364px] flex flex-col justify-between">
 				<div className="w-full flex flex-col gap-3">

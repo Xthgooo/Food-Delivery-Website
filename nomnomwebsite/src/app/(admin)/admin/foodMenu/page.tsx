@@ -16,7 +16,7 @@ export type CategoriesWithNumberType = {
 
 export default function FoodMenuPage() {
 	const [categories, setCategories] = useState<CategoriesWithNumberType[]>([]);
-	const [allFoodsNumber, setAllFoodsNumber] = useState<number>();
+	const [allFoodsNumber, setAllFoodsNumber] = useState<number>(0);
 	const router = useRouter();
 
 	const getAllFoodsNumber = async () => {
@@ -102,7 +102,7 @@ export default function FoodMenuPage() {
 			<div className="lg:h-[120px] md:h-[150px] sm:h-[200px] h-[290px] mb-[40px]" />
 
 			<div className="px-10 flex flex-col gap-5">
-				{categories.map(({ categoryName, _id, allFoodsNumber }) => {
+				{categories.map(({ categoryName, _id }) => {
 					const slug = categoryName.toLowerCase().replace(/\s+/g, "-");
 					return (
 						<section key={_id} id={slug} className="scroll-mt-[140px]">

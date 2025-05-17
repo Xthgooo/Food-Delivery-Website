@@ -19,7 +19,6 @@ export const AddFoodToCart = ({
 	_id,
 }: FoodType) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
-	// const [address, setAddress] = useState<string>("");
 
 	return (
 		<Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -38,10 +37,9 @@ export const AddFoodToCart = ({
 					setIsOpen={setIsOpen}
 				/>
 			</DialogContent>
-			//
+
 			<DialogContent className="bg-white rounded-[20px]">
-				// <AddressDialogue setIsOpen={setIsOpen} />
-				//
+				<AddressDialogue setIsOpen={setIsOpen} />
 			</DialogContent>
 		</Dialog>
 	);

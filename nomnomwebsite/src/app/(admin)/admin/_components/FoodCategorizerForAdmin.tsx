@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { EditableFoodCard } from "./add&EditFood/EditableFoodCard";
 import { FoodsType } from "@/app/(customer)/page";
@@ -20,16 +20,16 @@ export const FoodCategorizerForAdmin = ({
 }: FoodCategorizerProps) => {
 	const [foods, setFoods] = useState<FoodsType[]>([]);
 
-	const getFoodsByCategory = async () => {
+	const getFoodsByCategory = useCallback(async () => {
 		const foodsArray = await axios.get(
 			`http://localhost:3001/food?categoryID=${id}`
 		);
 		setFoods(foodsArray.data.foodsByCategory);
-	};
+	}, [id]);
 
 	useEffect(() => {
 		getFoodsByCategory();
-	}, [id]);
+	}, [getFoodsByCategory]);
 
 	return (
 		<div

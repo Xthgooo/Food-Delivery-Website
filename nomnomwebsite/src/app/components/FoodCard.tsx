@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { AddFoodToCart } from "./foodOrder/AddFoodToCart";
 
 export type FoodType = {
@@ -18,7 +19,11 @@ export const FoodCard = ({
 	return (
 		<div className="max-w-[396px] w-full h-[342px] bg-white rounded-[20px] flex flex-col gap-5 relative">
 			<div className="w-full h-[210px] rounded-[12px] relative overflow-hidden">
-				<img src={image} className="w-full h-full bg-cover" />
+				<Image
+					alt="food image"
+					src={image}
+					className="w-full h-full bg-cover"
+				/>
 				<div
 					className="absolute inset-0 bg-gradient-to-b from-transparent to-white transition-all duration-1000 ease-in-out top-[70%]"
 					style={{ height: "30%" }}></div>

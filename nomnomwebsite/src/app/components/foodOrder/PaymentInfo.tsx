@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Line } from "../assets/Line";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../contextProvider/AuthContext";

@@ -23,6 +23,6 @@ export default function AdminLayout({
 			</div>
 		</AdminContextProvider>
 	) : (
-		<div className="text-white text-9xl">"Unauthorized"</div>
+		<div className="text-white text-9xl">`&quot;`Unauthorized`&quot;`</div>
 	);
 }

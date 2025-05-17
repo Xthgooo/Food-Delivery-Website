@@ -13,6 +13,7 @@ import {
 import { FormTemplate } from "../createnewaccount/_components/formTemplate";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
 export default function ResetPasswordHome() {
 	const formSchema = z.object({
@@ -30,8 +31,6 @@ export default function ResetPasswordHome() {
 
 	const emailValue = form.watch("email");
 
-	function onSubmit(values: z.infer<typeof formSchema>) {}
-
 	return (
 		<div className="w-screen h-screen flex gap-12 items-center p-5 pl-40 justify-center">
 			<FormTemplate
@@ -39,7 +38,7 @@ export default function ResetPasswordHome() {
 				forNewAccount={true}
 				questionsContent={
 					<Form {...form}>
-						<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+						<form className="space-y-6">
 							<FormField
 								control={form.control}
 								name="email"
@@ -67,7 +66,11 @@ export default function ResetPasswordHome() {
 				description="Enter your email to receive a password reset link."
 			/>
 			<div className="w-[856px] h-[904px]">
-				<img src="/images/deliveryMan.png" className="w-full h-full bg-cover" />
+				<Image
+					alt="Coffee on a table"
+					src="/images/deliveryMan.png"
+					className="w-full h-full bg-cover"
+				/>
 			</div>
 		</div>
 	);

@@ -61,6 +61,7 @@ export const FormPageTwo = () => {
 			...formData,
 			password: values.password,
 		};
+		setFormData(allInfo);
 
 		signUp(allInfo);
 		router.push("/");
@@ -123,7 +124,7 @@ export const FormPageTwo = () => {
 							type="submit"
 							disabled={!isFormFilled}
 							className="w-full h-9 flex justify-center items-center text-black  bg-white text-[14px] disabled:opacity-50 disabled:cursor-not-allowed">
-							Let's Go!
+							Let`&apos;`s Go!
 						</Button>
 					</form>
 				</Form>

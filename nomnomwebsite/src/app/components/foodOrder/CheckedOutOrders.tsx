@@ -46,7 +46,7 @@ export const CheckOutOrders = () => {
 						</div>
 					) : orders.length === 0 ? (
 						<div className="text-white text-sm italic opacity-70">
-							🧾 You don't have any order history yet!
+							🧾 You don`&apos;`t have any order history yet!
 						</div>
 					) : (
 						orders
