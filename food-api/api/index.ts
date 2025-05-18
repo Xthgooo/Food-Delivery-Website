@@ -1,11 +1,12 @@
-import { connectToDataBase } from "./database/connect-to-db";
 import cors from "cors";
-import categoryRouter from "./routes/category.route";
-import foodRouter from "./routes/food.route";
-import foodOrderRouter from "./routes/foodOrder.route";
-import userRouter from "./routes/user.route";
-import { AuthRouter } from "./routes/auth.route";
+
 import dotenv from "dotenv";
+import foodRouter from "../src/routes/food.route";
+import categoryRouter from "../src/routes/category.route";
+import foodOrderRouter from "../src/routes/foodOrder.route";
+import userRouter from "../src/routes/user.route";
+import { AuthRouter } from "../src/routes/auth.route";
+import { connectToDataBase } from "../src/database/connect-to-db";
 
 connectToDataBase();
 const express = require("express");
@@ -23,5 +24,5 @@ app.use("/user", userRouter);
 app.use("/auth", AuthRouter);
 
 app.listen(port, () => {
-  console.log(`example app listening on port ${port}`);
+	console.log(`example app listening on port ${port}`);
 });
