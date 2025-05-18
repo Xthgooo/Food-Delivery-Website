@@ -17,11 +17,12 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 
-app.use("/food", foodRouter);
-app.use("/category", categoryRouter);
-app.use("/foodOrder", foodOrderRouter);
-app.use("/user", userRouter);
-app.use("/auth", AuthRouter);
+app
+	.use("/food", foodRouter)
+	.use("/category", categoryRouter)
+	.use("/foodOrder", foodOrderRouter)
+	.use("/user", userRouter)
+	.use("/auth", AuthRouter);
 
 app.listen(port, () => {
 	console.log(`example app listening on port ${port}`);
