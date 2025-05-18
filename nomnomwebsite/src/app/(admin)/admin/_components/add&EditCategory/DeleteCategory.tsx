@@ -38,7 +38,7 @@ export const DeleteCategory = ({
 
 	const handleDeleteCategory = async () => {
 		try {
-			await axios.delete(`http://localhost:3001/category/${id}`, {
+			await axios.delete(`${process.env.API_URL}/category/${id}`, {
 				headers: {
 					"Content-type": "application/json",
 					Authorization: `${token}`,
@@ -62,7 +62,7 @@ export const DeleteCategory = ({
 		try {
 			await Promise.all(
 				foods.map(async ({ _id }) => {
-					await axios.delete(`http://localhost:3001/food/${_id}`, {
+					await axios.delete(`${process.env.API_URL}/food/${_id}`, {
 						headers: {
 							"Content-type": "application/json",
 							Authorization: `${token}`,
@@ -71,7 +71,7 @@ export const DeleteCategory = ({
 				})
 			);
 
-			await axios.delete(`http://localhost:3001/category/${id}`, {
+			await axios.delete(`${process.env.API_URL}/category/${id}`, {
 				headers: {
 					"Content-type": "application/json",
 					Authorization: `${token}`,

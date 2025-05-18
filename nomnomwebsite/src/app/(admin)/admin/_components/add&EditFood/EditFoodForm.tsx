@@ -105,7 +105,7 @@ export const EditFoodForm = ({
 	};
 
 	const getCategories = async () => {
-		const categoriesData = await axios.get("http://localhost:3001/category");
+		const categoriesData = await axios.get(`${process.env.API_URL}/category`);
 		setCategories(categoriesData.data.categories);
 	};
 
@@ -139,7 +139,7 @@ export const EditFoodForm = ({
 		console.log(foodData);
 
 		const token = localStorage.getItem("token");
-		await axios.put(`http://localhost:3001/food/${_id}`, foodData, {
+		await axios.put(`${process.env.API_URL}/food/${_id}`, foodData, {
 			headers: {
 				"Content-type": "application/json",
 				Authorization: `${token}`,

@@ -20,13 +20,13 @@ export default function FoodMenuPage() {
 	const router = useRouter();
 
 	const getAllFoodsNumber = async () => {
-		const response = await axios.get("http://localhost:3001/food/getCount");
+		const response = await axios.get(`${process.env.API_URL}/food/getCount`);
 		setAllFoodsNumber(response.data.numberOfAllFoods);
 	};
 
 	const getCategories = async () => {
 		const response = await axios.get(
-			"http://localhost:3001/category/getCategoriesWithCounts"
+			`${process.env.API_URL}/category/getCategoriesWithCounts`
 		);
 		setCategories(response.data.categories);
 	};

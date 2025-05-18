@@ -19,7 +19,7 @@ export const CheckOutOrders = () => {
 		const fetchOrders = async () => {
 			try {
 				const response = await axios.get(
-					`http://localhost:3001/foodOrder?userID=${user._id}`
+					`${process.env.API_URL}/foodOrder?userID=${user._id}`
 				);
 				setOrders(response.data.foodOrderByUser);
 			} catch (error) {

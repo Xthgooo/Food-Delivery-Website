@@ -26,7 +26,7 @@ export const AddCategoryDialogContent = ({
 			const token = localStorage.getItem("token");
 
 			await axios.post(
-				"http://localhost:3001/category",
+				`${process.env.API_URL}/category`,
 				{
 					newCategory: categoryName,
 				},

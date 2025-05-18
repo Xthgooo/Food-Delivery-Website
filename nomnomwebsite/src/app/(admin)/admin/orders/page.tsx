@@ -14,7 +14,7 @@ export default function FoodOrdersPage() {
 	const { orders, setOrders } = useContext(AdminContext);
 
 	const getOrders = async () => {
-		const allOrders = await axios.get("http://localhost:3001/foodOrder");
+		const allOrders = await axios.get(`${process.env.API_URL}/foodOrder`);
 		setOrders(allOrders.data.allOrders);
 	};
 
@@ -29,7 +29,7 @@ export default function FoodOrdersPage() {
 			const token = localStorage.getItem("token");
 
 			await axios.put(
-				`http://localhost:3001/foodOrder/${orderID}`,
+				`${process.env.API_URL}/foodOrder/${orderID}`,
 				{
 					status,
 				},

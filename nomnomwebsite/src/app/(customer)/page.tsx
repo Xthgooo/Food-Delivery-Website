@@ -35,7 +35,7 @@ export default function Home() {
 
 	const getCategories = async () => {
 		try {
-			const categoriesData = await axios.get("http://localhost:3001/category");
+			const categoriesData = await axios.get(`${process.env.API_URL}/category`);
 			setCategories(categoriesData.data.categories);
 		} catch (error) {
 			console.error("Error fetching categories:", error);

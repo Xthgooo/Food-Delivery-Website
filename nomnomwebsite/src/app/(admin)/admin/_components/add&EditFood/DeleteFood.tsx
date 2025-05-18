@@ -30,7 +30,7 @@ export const DeleteFood = ({
 
 	const handleFoodDelete = async () => {
 		try {
-			await axios.delete(`http://localhost:3001/food/${id}`);
+			await axios.delete(`${process.env.API_URL}/food/${id}`);
 
 			toast.success("Food has been deleted", {
 				description: `${foodName} has been deleted on ${new Date().toLocaleString()}`,

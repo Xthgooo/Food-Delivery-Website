@@ -58,7 +58,7 @@ export const EditUserInfo = ({ id, title, value }: ShowUserDetailsProps) => {
 				[infoTitle]: inputValue,
 			};
 
-			await axios.put(`http://localhost:3001/user/${id}`, updatedData);
+			await axios.put(`${process.env.API_URL}/user/${id}`, updatedData);
 
 			toast.success("User info successfully updated!", {
 				description: "Your changes have been saved.",

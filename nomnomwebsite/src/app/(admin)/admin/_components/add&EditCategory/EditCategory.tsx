@@ -32,7 +32,7 @@ export const EditCategory = ({
 	async function onSubmit(updatedCategoryName: string) {
 		const token = localStorage.getItem("token");
 		await axios.put(
-			`http://localhost:3001/category/${categoryID}`,
+			`${process.env.API_URL}/${categoryID}`,
 			{ categoryName: updatedCategoryName },
 			{
 				headers: {

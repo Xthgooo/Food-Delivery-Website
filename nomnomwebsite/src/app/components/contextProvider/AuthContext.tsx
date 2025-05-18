@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 	const signIn = async ({ email, password }: SignInType) => {
 		try {
 			const { data }: { data: DataType } = await axios.post(
-				"http://localhost:3001/auth/signIn",
+				`${process.env.API_URL}/auth/signIn`,
 				{ email, password }
 			);
 
@@ -92,7 +92,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 	}: SignUpType) => {
 		try {
 			const { data }: { data: DataType } = await axios.post(
-				"http://localhost:3001/auth/signUp",
+				`${process.env.API_URL}/auth/signUp`,
 				{ profileEmoji, email, password, phoneNumber, address }
 			);
 
@@ -119,7 +119,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 			setLoading(true);
 
 			try {
-				const { data } = await axios.get("http://localhost:3001/auth/me", {
+				const { data } = await axios.get(`${process.env.API_URL}/auth/me`, {
 					headers: { Authorization: `${token}` },
 				});
 

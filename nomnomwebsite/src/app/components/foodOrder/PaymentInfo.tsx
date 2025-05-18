@@ -55,7 +55,7 @@ export const PaymentInfo = ({ cartItems, refreshCart }: PaymentInfoProps) => {
 				},
 			};
 
-			await axios.post("http://localhost:3001/foodOrder", newOrder);
+			await axios.post(`${process.env.API_URL}/foodOrder`, newOrder);
 			localStorage.removeItem("cart");
 			refreshCart();
 			toast.success("Order placed successfully!");

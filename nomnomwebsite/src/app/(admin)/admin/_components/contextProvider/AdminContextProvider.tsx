@@ -43,7 +43,7 @@ export const AdminContextProvider = ({ children }: { children: ReactNode }) => {
 
 	const getOrders = async () => {
 		try {
-			const response = await axios.get("http://localhost:3001/foodOrder");
+			const response = await axios.get(`${process.env.API_URL}/foodOrder`);
 			setOrders(response.data.allOrders);
 		} catch (error) {
 			console.error("Failed to fetch orders:", error);

@@ -31,7 +31,7 @@ export const FoodCategorizer = ({
 	useEffect(() => {
 		const getFoodsByCategory = async () => {
 			const foodsArray = await axios.get(
-				`http://localhost:3001/food?categoryID=${categoryID}`
+				`${process.env.API_URL}/food?categoryID=${categoryID}`
 			);
 			setFoodsByCategory(foodsArray.data.foodsByCategory);
 		};

@@ -24,7 +24,7 @@ export const FoodCardInCart = ({
 
 	useEffect(() => {
 		const getFoodInfo = async () => {
-			const foodInfo = await axios.get(`http://localhost:3001/food/${foodID}`);
+			const foodInfo = await axios.get(`${process.env.API_URL}/food/${foodID}`);
 			setOrderedFood(foodInfo.data.findFood);
 		};
 		getFoodInfo();

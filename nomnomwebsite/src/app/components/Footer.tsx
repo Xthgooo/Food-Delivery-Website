@@ -26,7 +26,7 @@ export const Footer = () => {
 	useEffect(() => {
 		const fetchCategories = async () => {
 			const response = await axios.get(
-				"http://localhost:3001/category/getCategoriesWithCounts"
+				`${process.env.API_URL}/category/getCategoriesWithCounts`
 			);
 			setCategories(response.data.categories);
 			console.log(response.data.categories);

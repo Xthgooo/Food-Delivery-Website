@@ -22,7 +22,7 @@ export const FoodCategorizerForAdmin = ({
 
 	const getFoodsByCategory = useCallback(async () => {
 		const foodsArray = await axios.get(
-			`http://localhost:3001/food?categoryID=${id}`
+			`${process.env.API_URL}/food?categoryID=${id}`
 		);
 		setFoods(foodsArray.data.foodsByCategory);
 	}, [id]);
