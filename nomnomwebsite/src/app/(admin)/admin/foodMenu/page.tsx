@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { CategoryBadge } from "../_components/CategoryBadge";
-
 import { FoodCategorizerForAdmin } from "../_components/FoodCategorizerForAdmin";
 import { AddCategory } from "../_components/add&EditCategory/AddCategory";
 import { Button } from "@/components/ui/button";
