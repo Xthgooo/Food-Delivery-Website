@@ -25,6 +25,7 @@ import {
 
 import { toast } from "sonner";
 import { CategoryType } from "@/app/(customer)/page";
+import { myAPI } from "@/axios";
 
 export type FormValues = {
 	foodName: string;
@@ -69,7 +70,7 @@ export const AddFoodForm = ({
 	const [categories, setCategories] = useState<CategoryType[]>([]);
 
 	const getCategories = async () => {
-		const categoriesData = await axios.get(`${process.env.API_URL}/category`);
+		const categoriesData = await myAPI.get(`${process.env.API_URL}/category`);
 		setCategories(categoriesData.data.categories);
 	};
 

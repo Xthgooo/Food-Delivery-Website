@@ -29,6 +29,7 @@ import { Edit2Icon } from "lucide-react";
 import { format } from "date-fns";
 import { EditableFoodCardProps } from "./EditableFoodCard";
 import { DeleteFood } from "./DeleteFood";
+import { myAPI } from "@/axios";
 
 export type FormValues = {
 	foodName: string;
@@ -105,7 +106,7 @@ export const EditFoodForm = ({
 	};
 
 	const getCategories = async () => {
-		const categoriesData = await axios.get(`${process.env.API_URL}/category`);
+		const categoriesData = await myAPI.get(`${process.env.API_URL}/category`);
 		setCategories(categoriesData.data.categories);
 	};
 
@@ -139,7 +140,7 @@ export const EditFoodForm = ({
 		console.log(foodData);
 
 		const token = localStorage.getItem("token");
-		await axios.put(`${process.env.API_URL}/food/${_id}`, foodData, {
+		await myAPI.put(`${process.env.API_URL}/food/${_id}`, foodData, {
 			headers: {
 				"Content-type": "application/json",
 				Authorization: `${token}`,

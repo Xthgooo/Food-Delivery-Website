@@ -5,6 +5,7 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 import axios from "axios";
 import { FoodType } from "@/app/components/FoodCard";
 import { usePathname } from "next/navigation";
+import { myAPI } from "@/axios";
 
 export type OneOrder = {
 	food: FoodType;
@@ -43,7 +44,7 @@ export const AdminContextProvider = ({ children }: { children: ReactNode }) => {
 
 	const getOrders = async () => {
 		try {
-			const response = await axios.get(`${process.env.API_URL}/foodOrder`);
+			const response = await myAPI.get(`${process.env.API_URL}/foodOrder`);
 			setOrders(response.data.allOrders);
 		} catch (error) {
 			console.error("Failed to fetch orders:", error);

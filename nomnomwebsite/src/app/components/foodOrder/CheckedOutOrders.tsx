@@ -5,6 +5,7 @@ import { useAuth } from "../contextProvider/AuthContext";
 import axios from "axios";
 import { FoodOrderInfo } from "@/app/(admin)/admin/_components/contextProvider/AdminContextProvider";
 import { OrderDetailsTemplate } from "./OrderDetailsTemplate";
+import { myAPI } from "@/axios";
 
 export const CheckOutOrders = () => {
 	const [orders, setOrders] = useState<FoodOrderInfo[]>([]);
@@ -18,7 +19,7 @@ export const CheckOutOrders = () => {
 		}
 		const fetchOrders = async () => {
 			try {
-				const response = await axios.get(
+				const response = await myAPI.get(
 					`${process.env.API_URL}/foodOrder?userID=${user._id}`
 				);
 				setOrders(response.data.foodOrderByUser);

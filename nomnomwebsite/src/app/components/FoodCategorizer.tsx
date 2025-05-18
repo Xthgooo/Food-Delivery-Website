@@ -5,6 +5,7 @@ import { FoodCard } from "./FoodCard";
 import { Title } from "./Title";
 import axios from "axios";
 import { CategoryType } from "../(customer)/page";
+import { myAPI } from "@/axios";
 
 type FoodCategorizerProps = {
 	title: string;
@@ -30,7 +31,7 @@ export const FoodCategorizer = ({
 
 	useEffect(() => {
 		const getFoodsByCategory = async () => {
-			const foodsArray = await axios.get(
+			const foodsArray = await myAPI.get(
 				`${process.env.API_URL}/food?categoryID=${categoryID}`
 			);
 			setFoodsByCategory(foodsArray.data.foodsByCategory);

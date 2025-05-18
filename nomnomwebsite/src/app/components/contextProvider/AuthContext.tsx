@@ -1,5 +1,6 @@
 "use client";
 
+import { myAPI } from "@/axios";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import {
@@ -64,7 +65,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
 	const signIn = async ({ email, password }: SignInType) => {
 		try {
-			const { data }: { data: DataType } = await axios.post(
+			const { data }: { data: DataType } = await myAPI.post(
 				`${process.env.API_URL}/auth/signIn`,
 				{ email, password }
 			);
@@ -91,7 +92,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 		address,
 	}: SignUpType) => {
 		try {
-			const { data }: { data: DataType } = await axios.post(
+			const { data }: { data: DataType } = await myAPI.post(
 				`${process.env.API_URL}/auth/signUp`,
 				{ profileEmoji, email, password, phoneNumber, address }
 			);
@@ -119,7 +120,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 			setLoading(true);
 
 			try {
-				const { data } = await axios.get(`${process.env.API_URL}/auth/me`, {
+				const { data } = await myAPI.get(`${process.env.API_URL}/auth/me`, {
 					headers: { Authorization: `${token}` },
 				});
 

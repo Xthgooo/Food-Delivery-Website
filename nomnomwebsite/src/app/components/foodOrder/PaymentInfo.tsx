@@ -6,6 +6,7 @@ import axios from "axios";
 import { useAuth } from "../contextProvider/AuthContext";
 import { toast } from "sonner";
 import { FoodType } from "../FoodCard";
+import { myAPI } from "@/axios";
 
 interface FoodOrder {
 	food: FoodType;
@@ -55,7 +56,7 @@ export const PaymentInfo = ({ cartItems, refreshCart }: PaymentInfoProps) => {
 				},
 			};
 
-			await axios.post(`${process.env.API_URL}/foodOrder`, newOrder);
+			await myAPI.post(`${process.env.API_URL}/foodOrder`, newOrder);
 			localStorage.removeItem("cart");
 			refreshCart();
 			toast.success("Order placed successfully!");

@@ -9,12 +9,13 @@ import {
 	StatusType,
 } from "../_components/contextProvider/AdminContextProvider";
 import { Button } from "@/components/ui/button";
+import { myAPI } from "@/axios";
 
 export default function FoodOrdersPage() {
 	const { orders, setOrders } = useContext(AdminContext);
 
 	const getOrders = async () => {
-		const allOrders = await axios.get(`${process.env.API_URL}/foodOrder`);
+		const allOrders = await myAPI.get(`${process.env.API_URL}/foodOrder`);
 		setOrders(allOrders.data.allOrders);
 	};
 
@@ -28,7 +29,7 @@ export default function FoodOrdersPage() {
 		try {
 			const token = localStorage.getItem("token");
 
-			await axios.put(
+			await myAPI.put(
 				`${process.env.API_URL}/foodOrder/${orderID}`,
 				{
 					status,

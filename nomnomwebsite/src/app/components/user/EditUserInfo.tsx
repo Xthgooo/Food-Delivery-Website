@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { toast } from "sonner";
+import { myAPI } from "@/axios";
 
 export const EditUserInfo = ({ id, title, value }: ShowUserDetailsProps) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -58,7 +59,7 @@ export const EditUserInfo = ({ id, title, value }: ShowUserDetailsProps) => {
 				[infoTitle]: inputValue,
 			};
 
-			await axios.put(`${process.env.API_URL}/user/${id}`, updatedData);
+			await myAPI.put(`${process.env.API_URL}/user/${id}`, updatedData);
 
 			toast.success("User info successfully updated!", {
 				description: "Your changes have been saved.",

@@ -7,6 +7,7 @@ import { FoodCategorizerForAdmin } from "../_components/FoodCategorizerForAdmin"
 import { AddCategory } from "../_components/add&EditCategory/AddCategory";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { myAPI } from "@/axios";
 
 export type CategoriesWithNumberType = {
 	_id: string;
@@ -20,12 +21,12 @@ export default function FoodMenuPage() {
 	const router = useRouter();
 
 	const getAllFoodsNumber = async () => {
-		const response = await axios.get(`${process.env.API_URL}/food/getCount`);
+		const response = await myAPI.get(`${process.env.API_URL}/food/getCount`);
 		setAllFoodsNumber(response.data.numberOfAllFoods);
 	};
 
 	const getCategories = async () => {
-		const response = await axios.get(
+		const response = await myAPI.get(
 			`${process.env.API_URL}/category/getCategoriesWithCounts`
 		);
 		setCategories(response.data.categories);

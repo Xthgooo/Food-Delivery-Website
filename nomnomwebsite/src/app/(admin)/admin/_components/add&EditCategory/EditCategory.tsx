@@ -10,6 +10,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { myAPI } from "@/axios";
 
 export const EditCategory = ({
 	categoryName,
@@ -31,7 +32,7 @@ export const EditCategory = ({
 
 	async function onSubmit(updatedCategoryName: string) {
 		const token = localStorage.getItem("token");
-		await axios.put(
+		await myAPI.put(
 			`${process.env.API_URL}/${categoryID}`,
 			{ categoryName: updatedCategoryName },
 			{

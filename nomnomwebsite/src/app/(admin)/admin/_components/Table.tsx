@@ -265,7 +265,7 @@ export function FoodOrdersDataTable({
 					if (!confirmed) return;
 
 					try {
-						await axios.delete(`${process.env.API_URL}/foodOrder/${orderID}`);
+						await api.delete(`${process.env.API_URL}/foodOrder/${orderID}`);
 						toast.success("Order deleted successfully");
 						refreshOrders();
 					} catch (error) {

@@ -6,6 +6,7 @@ import { Minus, Plus, XIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FoodType } from "../FoodCard";
 import Image from "next/image";
+import { myAPI } from "@/axios";
 
 export const FoodCardInCart = ({
 	foodID,
@@ -24,7 +25,7 @@ export const FoodCardInCart = ({
 
 	useEffect(() => {
 		const getFoodInfo = async () => {
-			const foodInfo = await axios.get(`${process.env.API_URL}/food/${foodID}`);
+			const foodInfo = await myAPI.get(`${process.env.API_URL}/food/${foodID}`);
 			setOrderedFood(foodInfo.data.findFood);
 		};
 		getFoodInfo();
