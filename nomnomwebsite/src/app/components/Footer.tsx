@@ -7,7 +7,6 @@ import { NomNomLogo } from "./Logo";
 import { FooterContentTemplate } from "./FooterContentTemplate";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { myAPI } from "@/axios";
 
 const footerEndButtons = [
@@ -26,9 +25,7 @@ export const Footer = () => {
 
 	useEffect(() => {
 		const fetchCategories = async () => {
-			const response = await myAPI.get(
-				`${process.env.API_URL}/category/getCategoriesWithCounts`
-			);
+			const response = await myAPI.get(`/category/getCategoriesWithCounts`);
 			setCategories(response.data.categories);
 			console.log(response.data.categories);
 		};

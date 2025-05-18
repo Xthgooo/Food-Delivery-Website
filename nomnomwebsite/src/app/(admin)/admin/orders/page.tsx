@@ -15,7 +15,7 @@ export default function FoodOrdersPage() {
 	const { orders, setOrders } = useContext(AdminContext);
 
 	const getOrders = async () => {
-		const allOrders = await myAPI.get(`${process.env.API_URL}/foodOrder`);
+		const allOrders = await myAPI.get(`/foodOrder`);
 		setOrders(allOrders.data.allOrders);
 	};
 
@@ -30,7 +30,7 @@ export default function FoodOrdersPage() {
 			const token = localStorage.getItem("token");
 
 			await myAPI.put(
-				`${process.env.API_URL}/foodOrder/${orderID}`,
+				`/foodOrder/${orderID}`,
 				{
 					status,
 				},

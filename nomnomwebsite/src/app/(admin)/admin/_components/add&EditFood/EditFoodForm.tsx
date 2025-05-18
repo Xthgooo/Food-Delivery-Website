@@ -106,7 +106,7 @@ export const EditFoodForm = ({
 	};
 
 	const getCategories = async () => {
-		const categoriesData = await myAPI.get(`${process.env.API_URL}/category`);
+		const categoriesData = await myAPI.get(`/category`);
 		setCategories(categoriesData.data.categories);
 	};
 
@@ -140,7 +140,7 @@ export const EditFoodForm = ({
 		console.log(foodData);
 
 		const token = localStorage.getItem("token");
-		await myAPI.put(`${process.env.API_URL}/food/${_id}`, foodData, {
+		await myAPI.put(`/food/${_id}`, foodData, {
 			headers: {
 				"Content-type": "application/json",
 				Authorization: `${token}`,

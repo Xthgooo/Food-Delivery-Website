@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { toast } from "sonner";
 import { useState } from "react";
+import { myAPI } from "@/axios";
 
 export const DeleteFood = ({
 	foodName,
@@ -30,7 +31,7 @@ export const DeleteFood = ({
 
 	const handleFoodDelete = async () => {
 		try {
-			await axios.delete(`${process.env.API_URL}/food/${id}`);
+			await myAPI.delete(`/food/${id}`);
 
 			toast.success("Food has been deleted", {
 				description: `${foodName} has been deleted on ${new Date().toLocaleString()}`,

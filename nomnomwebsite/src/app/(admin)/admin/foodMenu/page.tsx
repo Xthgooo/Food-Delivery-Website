@@ -21,14 +21,12 @@ export default function FoodMenuPage() {
 	const router = useRouter();
 
 	const getAllFoodsNumber = async () => {
-		const response = await myAPI.get(`${process.env.API_URL}/food/getCount`);
+		const response = await myAPI.get(`/food/getCount`);
 		setAllFoodsNumber(response.data.numberOfAllFoods);
 	};
 
 	const getCategories = async () => {
-		const response = await myAPI.get(
-			`${process.env.API_URL}/category/getCategoriesWithCounts`
-		);
+		const response = await myAPI.get(`/category/getCategoriesWithCounts`);
 		setCategories(response.data.categories);
 	};
 

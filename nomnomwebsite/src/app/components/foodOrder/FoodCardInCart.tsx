@@ -25,7 +25,7 @@ export const FoodCardInCart = ({
 
 	useEffect(() => {
 		const getFoodInfo = async () => {
-			const foodInfo = await myAPI.get(`${process.env.API_URL}/food/${foodID}`);
+			const foodInfo = await myAPI.get(`/food/${foodID}`);
 			setOrderedFood(foodInfo.data.findFood);
 		};
 		getFoodInfo();

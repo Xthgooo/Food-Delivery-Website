@@ -70,7 +70,7 @@ export const AddFoodForm = ({
 	const [categories, setCategories] = useState<CategoryType[]>([]);
 
 	const getCategories = async () => {
-		const categoriesData = await myAPI.get(`${process.env.API_URL}/category`);
+		const categoriesData = await myAPI.get(`/category`);
 		setCategories(categoriesData.data.categories);
 	};
 
@@ -106,7 +106,7 @@ export const AddFoodForm = ({
 
 		const token = localStorage.getItem("token");
 
-		await axios.post(`${process.env.API_URL}/food`, foodData, {
+		await myAPI.post(`/food`, foodData, {
 			headers: {
 				"Content-type": "application/json",
 				Authorization: `${token}`,

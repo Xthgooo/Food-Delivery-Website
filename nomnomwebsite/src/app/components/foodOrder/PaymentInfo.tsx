@@ -56,7 +56,7 @@ export const PaymentInfo = ({ cartItems, refreshCart }: PaymentInfoProps) => {
 				},
 			};
 
-			await myAPI.post(`${process.env.API_URL}/foodOrder`, newOrder);
+			await myAPI.post(`/foodOrder`, newOrder);
 			localStorage.removeItem("cart");
 			refreshCart();
 			toast.success("Order placed successfully!");

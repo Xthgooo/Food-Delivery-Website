@@ -44,7 +44,7 @@ export const AdminContextProvider = ({ children }: { children: ReactNode }) => {
 
 	const getOrders = async () => {
 		try {
-			const response = await myAPI.get(`${process.env.API_URL}/foodOrder`);
+			const response = await myAPI.get(`/foodOrder`);
 			setOrders(response.data.allOrders);
 		} catch (error) {
 			console.error("Failed to fetch orders:", error);

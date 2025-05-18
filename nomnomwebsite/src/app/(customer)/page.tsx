@@ -10,9 +10,9 @@ import { Badge } from "@/components/ui/badge";
 import { FoodCategorizer } from "../components/FoodCategorizer";
 import { Footer } from "../components/Footer";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Header } from "../components/Header";
 import { Title } from "../components/Title";
+import { myAPI } from "@/axios";
 
 export type FoodsType = {
 	_id: string;
@@ -35,7 +35,7 @@ export default function Home() {
 
 	const getCategories = async () => {
 		try {
-			const categoriesData = await axios.get(`${process.env.API_URL}/category`);
+			const categoriesData = await myAPI.get(`/category`);
 			setCategories(categoriesData.data.categories);
 		} catch (error) {
 			console.error("Error fetching categories:", error);

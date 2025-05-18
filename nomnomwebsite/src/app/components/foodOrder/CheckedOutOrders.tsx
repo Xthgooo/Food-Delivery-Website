@@ -19,9 +19,7 @@ export const CheckOutOrders = () => {
 		}
 		const fetchOrders = async () => {
 			try {
-				const response = await myAPI.get(
-					`${process.env.API_URL}/foodOrder?userID=${user._id}`
-				);
+				const response = await myAPI.get(`/foodOrder?userID=${user._id}`);
 				setOrders(response.data.foodOrderByUser);
 			} catch (error) {
 				console.error("Error fetching orders:", error);

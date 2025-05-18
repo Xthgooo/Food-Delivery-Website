@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/dialog";
 import { Trash2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
 import { toast } from "sonner";
 import { FoodsType } from "@/app/(customer)/page";
 import { useState } from "react";
@@ -39,7 +38,7 @@ export const DeleteCategory = ({
 
 	const handleDeleteCategory = async () => {
 		try {
-			await myAPI.delete(`${process.env.API_URL}/category/${id}`, {
+			await myAPI.delete(`/category/${id}`, {
 				headers: {
 					"Content-type": "application/json",
 					Authorization: `${token}`,
@@ -63,7 +62,7 @@ export const DeleteCategory = ({
 		try {
 			await Promise.all(
 				foods.map(async ({ _id }) => {
-					await myAPI.delete(`${process.env.API_URL}/food/${_id}`, {
+					await myAPI.delete(`/food/${_id}`, {
 						headers: {
 							"Content-type": "application/json",
 							Authorization: `${token}`,
@@ -72,7 +71,7 @@ export const DeleteCategory = ({
 				})
 			);
 
-			await myAPI.delete(`${process.env.API_URL}/category/${id}`, {
+			await myAPI.delete(`/category/${id}`, {
 				headers: {
 					"Content-type": "application/json",
 					Authorization: `${token}`,
