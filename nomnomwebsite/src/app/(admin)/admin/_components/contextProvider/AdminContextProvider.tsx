@@ -2,7 +2,6 @@
 
 import { createContext, useState, ReactNode, useEffect } from "react";
 
-import axios from "axios";
 import { FoodType } from "@/app/components/FoodCard";
 import { usePathname } from "next/navigation";
 import { myAPI } from "@/axios";

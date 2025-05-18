@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import { useAuth } from "../contextProvider/AuthContext";
 import { toast } from "sonner";
 import { FoodType } from "../FoodCard";

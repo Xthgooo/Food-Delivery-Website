@@ -1,7 +1,7 @@
 "use client";
 
 import { myAPI } from "@/axios";
-import axios from "axios";
+
 import { useRouter } from "next/navigation";
 import {
 	createContext,

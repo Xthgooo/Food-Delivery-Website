@@ -1,9 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import axios from "axios";
 import { EditableFoodCard } from "./add&EditFood/EditableFoodCard";
 import { FoodsType } from "@/app/(customer)/page";
-
 import { DeleteCategory } from "./add&EditCategory/DeleteCategory";
 import { AddFood } from "./add&EditFood/AddFood";
 import { EditCategory } from "./add&EditCategory/EditCategory";

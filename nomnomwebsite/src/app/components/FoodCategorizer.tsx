@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { FoodCard } from "./FoodCard";
 import { Title } from "./Title";
-import axios from "axios";
+
 import { CategoryType } from "../(customer)/page";
 import { myAPI } from "@/axios";
 

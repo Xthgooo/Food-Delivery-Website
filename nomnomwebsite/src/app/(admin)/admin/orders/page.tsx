@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import { DatePickerWithRange } from "../_components/DateRangePicker";
 import { FoodOrdersDataTable } from "../_components/Table";
 import { useContext } from "react";

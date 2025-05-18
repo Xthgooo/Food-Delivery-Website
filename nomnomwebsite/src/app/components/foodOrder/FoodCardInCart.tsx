@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import axios from "axios";
+
 import { Minus, Plus, XIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FoodType } from "../FoodCard";

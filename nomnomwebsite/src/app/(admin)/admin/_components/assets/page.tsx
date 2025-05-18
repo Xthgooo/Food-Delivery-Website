@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { CategoryBadge } from "../CategoryBadge";

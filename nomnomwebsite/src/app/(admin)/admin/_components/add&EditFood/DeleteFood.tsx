@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/dialog";
 import { Trash2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
 import { toast } from "sonner";
 import { useState } from "react";
 import { myAPI } from "@/axios";

@@ -42,7 +42,6 @@ import {
 	StatusType,
 } from "./contextProvider/AdminContextProvider";
 import { ShowOrderedFoods } from "./ShowOrderedFoods";
-import axios from "axios";
 import { toast } from "sonner";
 import { Trash2Icon } from "lucide-react";
 import { myAPI } from "@/axios";
