@@ -45,6 +45,7 @@ import { ShowOrderedFoods } from "./ShowOrderedFoods";
 import axios from "axios";
 import { toast } from "sonner";
 import { Trash2Icon } from "lucide-react";
+import { myAPI } from "@/axios";
 
 export function FoodOrdersDataTable({
 	tableData,
@@ -265,7 +266,7 @@ export function FoodOrdersDataTable({
 					if (!confirmed) return;
 
 					try {
-						await api.delete(`${process.env.API_URL}/foodOrder/${orderID}`);
+						await myAPI.delete(`/foodOrder/${orderID}`);
 						toast.success("Order deleted successfully");
 						refreshOrders();
 					} catch (error) {

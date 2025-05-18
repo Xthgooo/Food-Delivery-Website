@@ -7,6 +7,7 @@ import { FoodsType } from "@/app/(customer)/page";
 import { DeleteCategory } from "./add&EditCategory/DeleteCategory";
 import { AddFood } from "./add&EditFood/AddFood";
 import { EditCategory } from "./add&EditCategory/EditCategory";
+import { myAPI } from "@/axios";
 
 export type FoodCategorizerProps = {
 	id: string;
@@ -21,9 +22,7 @@ export const FoodCategorizerForAdmin = ({
 	const [foods, setFoods] = useState<FoodsType[]>([]);
 
 	const getFoodsByCategory = useCallback(async () => {
-		const foodsArray = await axios.get(
-			`${process.env.API_URL}/food?categoryID=${id}`
-		);
+		const foodsArray = await myAPI.get(`/food?categoryID=${id}`);
 		setFoods(foodsArray.data.foodsByCategory);
 	}, [id]);
 

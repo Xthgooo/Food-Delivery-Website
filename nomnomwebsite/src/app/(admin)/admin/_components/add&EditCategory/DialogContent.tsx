@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { myAPI } from "@/axios";
 
 export const AddCategoryDialogContent = ({
 	refreshCategories,
@@ -25,8 +26,8 @@ export const AddCategoryDialogContent = ({
 		try {
 			const token = localStorage.getItem("token");
 
-			await axios.post(
-				`${process.env.API_URL}/category`,
+			await myAPI.post(
+				`$/category`,
 				{
 					newCategory: categoryName,
 				},
