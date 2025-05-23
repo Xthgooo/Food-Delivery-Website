@@ -1,149 +1,151 @@
 "use client";
 
-import { myAPI } from "@/axios";
+import { myAPI, setAuthToken } from "@/axios";
 
 import { useRouter } from "next/navigation";
 import {
-	createContext,
-	PropsWithChildren,
-	useContext,
-	useEffect,
-	useState,
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
 } from "react";
 import { toast } from "sonner";
 
 export type UserType = {
-	_id: string;
-	email: string;
-	profileEmoji: string;
-	phoneNumber: string;
-	address: string;
-	role: "Admin" | "User";
+  _id: string;
+  email: string;
+  profileEmoji: string;
+  phoneNumber: string;
+  address: string;
+  role: "Admin" | "User";
 };
 
 export type User = {
-	user: UserType | null;
+  user: UserType | null;
 };
 
 type AuthContextType = {
-	user: UserType | null;
-	signIn: ({ email, password }: SignInType) => Promise<void>;
-	signUp: ({
-		profileEmoji,
-		email,
-		password,
-		phoneNumber,
-		address,
-	}: SignUpType) => Promise<void>;
-	signOut: () => void;
+  user: UserType | null;
+  signIn: ({ email, password }: SignInType) => Promise<void>;
+  signUp: ({
+    profileEmoji,
+    email,
+    password,
+    phoneNumber,
+    address,
+  }: SignUpType) => Promise<void>;
+  signOut: () => void;
 };
 
 type DataType = {
-	user: UserType;
-	token: string;
+  user: UserType;
+  token: string;
 };
 
 type SignInType = {
-	email: string;
-	password: string;
+  email: string;
+  password: string;
 };
 
 export type SignUpType = {
-	profileEmoji: string;
-	email: string;
-	password: string;
-	phoneNumber: string;
-	address: string;
+  profileEmoji: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  address: string;
 };
 
 const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
-	const [user, setUser] = useState<UserType | null>(null);
-	const [loading, setLoading] = useState<boolean>(false);
-	const router = useRouter();
+  const [user, setUser] = useState<UserType | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
 
-	const signIn = async ({ email, password }: SignInType) => {
-		try {
-			const { data }: { data: DataType } = await myAPI.post(`$/auth/signIn`, {
-				email,
-				password,
-			});
+  const signIn = async ({ email, password }: SignInType) => {
+    try {
+      const { data }: { data: DataType } = await myAPI.post(`/auth/signIn`, {
+        email,
+        password,
+      });
 
-			localStorage.setItem("token", data.token);
-			setUser(data.user);
+      localStorage.setItem("token", data.token);
+      setUser(data.user);
 
-			if (data.user.role === "User") {
-				router.push("/");
-			} else if (data.user.role === "Admin") {
-				router.push("/admin/orders");
-			}
-		} catch (error) {
-			console.error("Sign-in error:", error);
-			toast.error("Failed to sign in!");
-		}
-	};
+      if (data.user.role === "User") {
+        router.push("/");
+      } else if (data.user.role === "Admin") {
+        router.push("/admin/orders");
+      }
+    } catch (error) {
+      console.error("Sign-in error:", error);
+      toast.error("The username or password is invalid");
+    }
+  };
 
-	const signUp = async ({
-		profileEmoji,
-		email,
-		password,
-		phoneNumber,
-		address,
-	}: SignUpType) => {
-		try {
-			const { data }: { data: DataType } = await myAPI.post(`/auth/signUp`, {
-				profileEmoji,
-				email,
-				password,
-				phoneNumber,
-				address,
-			});
+  const signUp = async ({
+    profileEmoji,
+    email,
+    password,
+    phoneNumber,
+    address,
+  }: SignUpType) => {
+    try {
+      const { data }: { data: DataType } = await myAPI.post(`/auth/signUp`, {
+        profileEmoji,
+        email,
+        password,
+        phoneNumber,
+        address,
+      });
 
-			localStorage.setItem("token", data.token);
-			setUser(data.user);
-		} catch (error) {
-			console.error("Sign-up error:", error);
-			toast.error("Failed to sign in!");
-		}
-	};
+      localStorage.setItem("token", data.token);
+      setUser(data.user);
+    } catch (error) {
+      console.error("Sign-up error:", error);
+      toast.error("Failed to sign in!");
+    }
+  };
 
-	const signOut = () => {
-		localStorage.removeItem("token");
-		localStorage.removeItem("cart");
-		setUser(null);
-		router.push("/");
-	};
+  const signOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("cart");
+    setUser(null);
+    router.push("/");
+  };
 
-	useEffect(() => {
-		const token = localStorage.getItem("token");
-		if (!token) return;
+  const getUser = async () => {
+    const token = localStorage.getItem("token");
 
-		const getUser = async () => {
-			setLoading(true);
+    setLoading(true);
 
-			try {
-				const { data } = await myAPI.get(`/auth/me`, {
-					headers: { Authorization: `${token}` },
-				});
+    try {
+      const { data } = await myAPI.get(`/auth/me`, {
+        headers: { Authorization: `${token}` },
+      });
 
-				setUser(data);
-			} catch (error) {
-				console.error("Token error", error);
-				localStorage.removeItem("token");
-				setUser(null);
-			} finally {
-				setLoading(false);
-			}
-		};
+      setUser(data);
+    } catch (error) {
+      console.error("Token error", error);
+      localStorage.removeItem("token");
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-		getUser();
-	}, []);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+    setAuthToken(token);
+    getUser();
+  }, []);
 
-	return (
-		<AuthContext.Provider value={{ user, signIn, signOut, signUp }}>
-			{!loading && children}
-		</AuthContext.Provider>
-	);
+  return (
+    <AuthContext.Provider value={{ user, signIn, signOut, signUp }}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 };
 export const useAuth = () => useContext(AuthContext);
