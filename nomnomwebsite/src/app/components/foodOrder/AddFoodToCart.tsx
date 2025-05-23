@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/dialog";
 import { ShowFoodDetails } from "./ShowFoodDetails";
 import { useState } from "react";
-import { AddressDialogue } from "./AddressDialogue";
 import { FoodType } from "../FoodCard";
 
 export const AddFoodToCart = ({

@@ -7,8 +7,6 @@ import {
 import { useAuth, User } from "../contextProvider/AuthContext";
 import { ShowUserDetails } from "./UserDetailsTemplate";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { CartType } from "../foodOrder/ShowFoodDetails";
 
 export const UserProfile = ({ user }: User) => {
   const { signOut } = useAuth();
